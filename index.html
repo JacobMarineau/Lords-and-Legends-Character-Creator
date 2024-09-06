@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lords & Legends Character Creator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Lords & Legends Character Creator</h1>
+    </header>
+    <main>
+      <div id="container">
+        <form id="character-form">
+            <section>
+                <h2>Basic Information</h2>
+                <label for="char-name">Character Name:</label>
+                <input type="text" id="char-name" name="char-name" aria-label="Character Name" placeholder="Enter Character Name" required>
+
+                
+                <label for="player-name">Player Name:</label>
+                <input type="text" id="player-name" name="player-name" aria-label="Player Name" placeholder="Enter Player Name" required>
+                
+                <label for="class-role">Class/Role:</label>
+                <input type="text" id="class-role" name="class-role" aria-label="Class Role" placeholder="Enter Class Role">
+
+                
+                <label for="background">Background:</label>
+                <textarea id="background" name="background" aria-label="Background" placeholder="Enter Character Background"></textarea>
+
+            </section>
+
+            <label for="race">Select Race:</label>
+            <section id="race-section">
+                <h2>Race Selection</h2>
+                <label for="race">Select Race:</label>
+                <select id="race" name="race">
+                    <option value="">--Choose a Race--</option>
+                    <option value="madorian">Madorian</option>
+                    <option value="novorian">Novorian</option>
+                    <option value="abrigian">Abrigian</option>
+                </select>
+            
+                <div id="race-modifiers">
+                    <h3>Race Modifiers</h3>
+                    <p id="race-strength-modifier">Strength: 0</p>
+                    <p id="race-dexterity-modifier">Dexterity: 0</p>
+                    <!-- Add more race-based stats here -->
+                </div>
+            
+                <div id="race-passives">
+                    <h3>Race Passives</h3>
+                    <p id="race-passive-description">Select a race to see passive abilities</p>
+                </div>
+            </section>
+
+            
+            
+
+    <div id="race-modifiers">
+        <h3>Race Modifiers</h3>
+        <p id="race-strength-modifier">Strength: 0</p>
+        <p id="race-dexterity-modifier">Dexterity: 0</p>
+        <!-- Add more race-based stats here -->
+    </div>
+
+    <div id="race-passives">
+        <h3>Race Passives</h3>
+        <p id="race-passive-description">Select a race to see passive abilities</p>
+    </div>
+</section>
+
+
+<section id="race-passives">
+    <h2>Race Passives</h2>
+    <p id="madorian-passive" class="race-passive">Madorian Presence: Leadership checks low cap at 10</p>
+    <p id="novorian-passive" class="race-passive">Novorian Presence: Wisdom can be used in place of a general Charisma check</p>
+    <p id="abrigian-passive" class="race-passive">Abrigian Presence: Can use Willpower instead of Charisma during Charisma rolls</p>
+</section>
+
+<section id="vocation-section">
+    <h2>Vocation Selection</h2>
+    <label for="vocation">Select Vocation:</label>
+    <select id="vocation" name="vocation">
+        <option value="">--Choose a Vocation--</option>
+        <option value="wanderer">Wanderer</option>
+        <option value="warrior">Warrior</option>
+        <!-- More vocations here -->
+    </select>
+
+    <div id="vocation-equipment">
+        <h3>Equipment</h3>
+        <ul id="vocation-equipment-list">
+            <li id="vocation-armor">Armor: None</li>
+            <li id="vocation-weapons">Weapons: None</li>
+            <!-- Add other vocation-based items -->
+        </ul>
+    </div>
+    
+    <div id="vocation-skills">
+        <h3>Skills</h3>
+        <ul id="vocation-skills-list">
+            <li>No skills selected</li>
+        </ul>
+    </div>
+</section>
+
+
+  
+            <section id="stats">
+                <h2>Stats</h2>
+                <div class="stat">
+                    <label for="hp">Hit Points (HP):</label>
+                    <input type="number" id="hp" name="hp" min="0" value="0">
+                </div>
+                <div class="stat">
+                    <label for="thp">Temporary Hit Points (THP):</label>
+                    <input type="number" id="thp" name="thp" min="0" value="0">
+                </div>
+                <div class="stat">
+                    <label for="ar">Armor Rating (AR):</label>
+                    <input type="number" id="ar" name="ar" min="0" value="0">
+                </div>
+                <div class="stat">
+                    <label for="mr">Magic Resistance (MR):</label>
+                    <input type="number" id="mr" name="mr" min="0" value="0">
+                </div>
+                <div class="stat">
+                    <label for="os">Over-Shields (OS):</label>
+                    <input type="number" id="os" name="os" min="0" value="0">
+                </div>
+            </section>
+            
+            <section id="attributes">
+                <h2>Attributes</h2>
+                <!-- Strength -->
+                <div class="attribute">
+                  <label for="strength" class="majorLabel">Strength:</label>
+                  <input type="number" id="strength" name="strength" min="0" max="100">
+                  <span id="strength-modifier">Modifier: 0</span>
+                  <div class="minor-stats">
+                      <div class="minor-stat">
+                          <label for="acrobatics">Acrobatics:</label>
+                          <input type="number" id="acrobatics" name="acrobatics">
+                          <span class="minor-stat-modifier">Modifier: 0</span>
+                      </div>
+                      <div class="minor-stat">
+                          <label for="agility">Agility:</label>
+                          <input type="number" id="agility" name="agility">
+                          <span class="minor-stat-modifier">Modifier: 0</span>
+                      </div>
+                      <div class="minor-stat">
+                          <label for="lifting">Lifting:</label>
+                          <input type="number" id="lifting" name="lifting">
+                          <span class="minor-stat-modifier">Modifier: 0</span>
+                      </div>
+                  </div>
+              </div>
+                
+                <!-- Dexterity -->
+                <div class="attribute">
+                    <label for="dexterity" class="majorLabel">Dexterity:</label>
+                    <input type="number" id="dexterity" name="dexterity" min="0" max="100">
+                    <span id="dexterity-modifier">Modifier: 0</span>
+                    <div class="minor-stats">
+                        <div class="minor-stat">
+                            <label for="sleight-of-hand">Sleight Of Hand:</label>
+                            <input type="number" id="sleight-of-hand" name="sleight-of-hand">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="stealth">Stealth:</label>
+                            <input type="number" id="stealth" name="stealth">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="medicine">Medicine (First-Aid):</label>
+                            <input type="number" id="medicine" name="medicine">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="weapon-mastery">Weapon Mastery:</label>
+                            <input type="number" id="weapon-mastery" name="weapon-mastery">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="carving">Carving:</label>
+                            <input type="number" id="carving" name="carving">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Intelligence -->
+                <div class="attribute">
+                    <label for="intelligence" class="majorLabel">Intelligence:</label>
+                    <input type="number" id="intelligence" name="intelligence" min="0" max="100">
+                    <span id="intelligence-modifier">Modifier: 0</span>
+                    <div class="minor-stats">
+                        <div class="minor-stat">
+                            <label for="history">History:</label>
+                            <input type="number" id="history" name="history">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="wisdom">Wisdom:</label>
+                            <input type="number" id="wisdom" name="wisdom">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="science">Science:</label>
+                            <input type="number" id="science" name="science">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="technology">Technology:</label>
+                            <input type="number" id="technology" name="technology">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="foraging">Foraging:</label>
+                            <input type="number" id="foraging" name="foraging">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Charisma -->
+                <div class="attribute">
+                    <label for="charisma" class="majorLabel">Charisma:</label>
+                    <input type="number" id="charisma" name="charisma" min="0" max="100">
+                    <span id="charisma-modifier">Modifier: 0</span>
+                    <div class="minor-stats">
+                        <div class="minor-stat">
+                            <label for="persuasion">Persuasion:</label>
+                            <input type="number" id="persuasion" name="persuasion">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="deception">Deception:</label>
+                            <input type="number" id="deception" name="deception">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="bargaining">Bargaining:</label>
+                            <input type="number" id="bargaining" name="bargaining">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="performance">Performance:</label>
+                            <input type="number" id="performance" name="performance">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="charm">Charm:</label>
+                            <input type="number" id="charm" name="charm">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Vitality -->
+                <div class="attribute">
+                    <label for="vitality" class="majorLabel">Vitality:</label>
+                    <input type="number" id="vitality" name="vitality" min="0" max="100">
+                    <span id="vitality-modifier">Modifier: 0</span>
+                    <div class="minor-stats">
+                        <div class="minor-stat">
+                            <label for="endurance">Endurance:</label>
+                            <input type="number" id="endurance" name="endurance">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="resistance">Resistance:</label>
+                            <input type="number" id="resistance" name="resistance">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ferocity -->
+                <div class="attribute">
+                    <label for="ferocity" class="majorLabel">Ferocity:</label>
+                    <input type="number" id="ferocity" name="ferocity" min="0" max="100">
+                    <span id="ferocity-modifier">Modifier: 0</span>
+                    <div class="minor-stats">
+                        <div class="minor-stat">
+                            <label for="intimidation">Intimidation:</label>
+                            <input type="number" id="intimidation" name="intimidation">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="physical-save">Physical Save Modifier:</label>
+                            <input type="number" id="physical-save" name="physical-save">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arcana -->
+                <div class="attribute">
+                    <label for="arcana">Arcana:</label>
+                    <input type="number" id="arcana" name="arcana" min="0" max="100">
+                    <span id="arcana-modifier">Modifier: 0</span>
+                    <div class="minor-stats">
+                        <div class="minor-stat">
+                            <label for="magical-knowledge">Magical Knowledge:</label>
+                            <input type="number" id="magical-knowledge" name="magical-knowledge">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="magic-save">Magic Save Modifier:</label>
+                            <input type="number" id="magic-save" name="magic-save">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Willpower -->
+                <div class="attribute">
+                    <label for="willpower" class="majorLabel">Willpower:</label>
+                    <input type="number" id="willpower" name="willpower" min="0" max="100">
+                    <span id="willpower-modifier">Innate: 0 (Extended: 0)</span>
+                    <div class="minor-stats">
+                        <div class="minor-stat">
+                            <label for="feat-of-heroism">Feat Of Heroism:</label>
+                            <input type="number" id="feat-of-heroism" name="feat-of-heroism">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="leadership">Leadership:</label>
+                            <input type="number" id="leadership" name="leadership">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                        <div class="minor-stat">
+                            <label for="counter-charisma">Counter-Charisma:</label>
+                            <input type="number" id="counter-charisma" name="counter-charisma">
+                            <span class="minor-stat-modifier">Modifier: 0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Additional sections for Skills, Equipment, etc. -->
+
+            <section id="character-sheet">
+                <h2>Character Sheet</h2>
+                <div id="character-info">
+                    <p><strong>Name:</strong> <span id="char-name-output">N/A</span></p>
+                    <p><strong>Race:</strong> <span id="char-race-output">N/A</span></p>
+                    <p><strong>Vocation:</strong> <span id="char-vocation-output">N/A</span></p>
+                </div>
+            
+                <div id="character-attributes">
+                    <h3>Attributes</h3>
+                    <p><strong>Strength:</strong> <span id="char-strength-output">0</span></p>
+                    <p><strong>Dexterity:</strong> <span id="char-dexterity-output">0</span></p>
+                    <!-- Other attributes -->
+                </div>
+            
+                <div id="character-passives">
+                    <h3>Passives</h3>
+                    <p id="char-passive-output">No passives selected</p>
+                </div>
+            
+                <div id="character-equipment">
+                    <h3>Equipment</h3>
+                    <ul>
+                        <li id="char-armor-output">Armor: None</li>
+                        <li id="char-weapons-output">Weapons: None</li>
+                    </ul>
+                </div>
+            </section>
+            
+            
+            <button type="submit">Save Character</button>
+        </form>
+      </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Lords & Legends</p>
+    </footer>
+    
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+:root {
+    --main-bg-color: #333;
+    --text-color: #fff;
+    --light-gray: #f4f4f4;
+}
+
+/* General styles */
+
+.box {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--light-gray);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: var(--main-bg-color);
+    color: var(--text-color);
+    padding: 10px 0;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+section h2 {
+    border-bottom: 2px solid var(--main-bg-color);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+label {
+    display: inline-block;
+    font-size: 0.875em;
+    margin-right: 10px;
+}
+
+.majorLabel {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+input, textarea {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="number"] {
+    width: 60px;
+    display: inline-block;
+    text-align: right;
+}
+
+button {
+    background: var(--main-bg-color);
+    color: var(--text-color);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #555;
+}
+
+#container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.attribute, .minor-stat {
+    margin-bottom: 15px;
+}
+
+.attribute label, .minor-stat label {
+    width: 120px;
+}
+
+.attribute input, .minor-stat input {
+    width: 60px;
+    display: inline-block;
+}
+
+.attribute span, .minor-stat span {
+    display: inline-block;
+    margin-left: 10px;
+    color: #555;
+    font-size: 0.875em;
+}
+
+.attribute span:before, .minor-stat span.minor-stat-modifier:before {
+    content: "Modifier: ";
+    font-weight: bold;
+}
+
+.minor-stats {
+    margin-top: 10px;
+}
+
+.minor-stat {
+    margin-bottom: 5px;
+}
+
+.minor-stat label {
+    width: 120px;
+}
+
+.minor-stat input {
+    width: 60px;
+}
+
+.minor-stat-modifier {
+    display: inline-block;
+    margin-left: 10px;
+    color: #555;
+    font-size: 0.875em;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+label[for="race"] {
+    display: block;
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+select#race {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+select#race:focus {
+    border-color: var(--main-bg-color);
+    outline: none;
+}
+
+#vocation-section {
+    margin-bottom: 20px;
+}
+
+#vocation-select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+#equipment-info, #skills-info {
+    margin-top: 20px;
+}
+
+#equipment-info h3, #skills-info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#equipment-info ul, #skills-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#equipment-info li, #skills-info li {
+    margin: 5px 0;
+}
+
+#micro-stats {
+    margin-top: 20px;
+}
+
+#micro-stats h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#micro-stats-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#micro-stats-info li {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+    .attribute input, .minor-stat input {
+        width: 100%;
+    }
+}
