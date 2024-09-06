@@ -1,3 +1,9 @@
+/* 
+Add different background off-white for stats section
+
+
+ */
+
 :root {
     --main-bg-color: #333;
     --text-color: #fff;
@@ -10,6 +16,7 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
 }
 
 body {
@@ -71,6 +78,13 @@ input[type="number"] {
     text-align: right;
 }
 
+/* Grid Layout for Stats and Attributes */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
 button {
     background: var(--main-bg-color);
     color: var(--text-color);
@@ -84,12 +98,24 @@ button:hover {
     background: #555;
 }
 
+.box, #stats-section 
+{
+    background-color: rgb(227, 225, 222);
+}
+
 #container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.attribute {
+    border: 2px solid#333;
+    background-color: #f4f4f4;
+    padding: 8px;
+    border-radius: 8px;
 }
 
 .attribute, .minor-stat {
@@ -97,7 +123,7 @@ button:hover {
 }
 
 .attribute label, .minor-stat label {
-    width: 120px;
+    width: 150px;
 }
 
 .attribute input, .minor-stat input {
@@ -129,17 +155,6 @@ button:hover {
     width: 120px;
 }
 
-.minor-stat input {
-    width: 60px;
-}
-
-.minor-stat-modifier {
-    display: inline-block;
-    margin-left: 10px;
-    color: #555;
-    font-size: 0.875em;
-}
-
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -150,13 +165,13 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-label[for="race"] {
+label[for="race"], label[for="vocation"] {
     display: block;
     font-size: 1em;
     margin-bottom: 5px;
 }
 
-select#race {
+select#race, select#vocation {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
@@ -166,18 +181,13 @@ select#race {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-select#race:focus {
+select#race:focus, select#vocation:focus {
     border-color: var(--main-bg-color);
     outline: none;
 }
 
-#vocation-section {
+#vocation-section, #race-section {
     margin-bottom: 20px;
-}
-
-#vocation-select {
-    padding: 5px;
-    font-size: 16px;
 }
 
 #equipment-info, #skills-info {
@@ -198,30 +208,21 @@ select#race:focus {
     margin: 5px 0;
 }
 
-#micro-stats {
-    margin-top: 20px;
-}
-
-#micro-stats h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-#micro-stats-info ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#micro-stats-info li {
-    margin: 5px 0;
-    font-size: 16px;
-}
-
+/* Mobile responsiveness */
 @media (max-width: 600px) {
     body {
         font-size: 14px;
     }
+
     .attribute input, .minor-stat input {
         width: 100%;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .box {
+        padding: 15px;
     }
 }

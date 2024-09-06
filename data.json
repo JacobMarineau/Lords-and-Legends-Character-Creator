@@ -1,0 +1,43 @@
+{
+    "races": {
+        "madorian": {
+            "name": "Madorian",
+            "passive": "Leadership checks low cap at 10",
+            "modifiers": {
+                "strength": 2,
+                "dexterity": 0,
+                "intelligence": 1,
+                "charisma": -1,
+                "vitality": 0,
+                "ferocity": 0,
+                "arcana": 0
+            }
+        },
+        "novorian": {
+            "name": "Novorian",
+            "passive": "Wisdom can be used in place of a general Charisma check",
+            "modifiers": {
+                "strength": 0,
+                "dexterity": 0,
+                "intelligence": 3,
+                "charisma": 0,
+                "vitality": -1,
+                "ferocity": 0,
+                "arcana": 1
+            }
+        },
+        "abrigian": {
+            "name": "Abrigian",
+            "passive": "Can use Willpower instead of Charisma during Charisma rolls",
+            "modifiers": {
+                "strength": -1,
+                "dexterity": 2,
+                "intelligence": 0,
+                "charisma": 0,
+                "vitality": 1,
+                "ferocity": 0,
+                "arcana": 0
+            }
+        }
+    }
+}
