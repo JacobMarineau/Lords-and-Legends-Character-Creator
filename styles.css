@@ -1,7 +1,8 @@
 /* 
-
-
- */
+=====================================================================
+                                Variables
+=====================================================================
+*/
 
 :root {
     --main-bg-color: #333;
@@ -9,14 +10,12 @@
     --light-gray: #f4f4f4;
 }
 
-/* General styles */
 
-.box {
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-}
+/* 
+=====================================================================
+                             General Styles
+=====================================================================
+*/
 
 body {
     font-family: Arial, sans-serif;
@@ -33,55 +32,14 @@ header {
 }
 
 main {
-    padding: 20px;
+    padding: 40px;
 }
 
-form {
-    background: #fff;
+.box {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-section {
-    margin-bottom: 20px;
-}
-
-section h2 {
-    border-bottom: 2px solid var(--main-bg-color);
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-}
-
-label {
-    display: inline-block;
-    font-size: 0.875em;
-    margin-right: 10px;
-}
-
-.majorLabel {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-input, textarea {
-    padding: 8px;
-    margin-bottom: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-input[type="number"] {
-    width: 60px;
-    display: inline-block;
-    text-align: right;
-}
-
-/* Grid Layout for Stats and Attributes */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    background-color: #fff;
 }
 
 button {
@@ -97,28 +55,112 @@ button:hover {
     background: #555;
 }
 
-.box, #stats-section 
-{
-    background-color: rgb(227, 225, 222);
+/* 
+=====================================================================
+                           Form and Input Styles
+=====================================================================
+*/
+
+form {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#container {
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
+input, textarea, select {
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="number"] {
+    width: 60px;
+    display: inline-block;
+    text-align: right;
+}
+
+select#race, select#vocation {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
     background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.attribute {
-    border: 2px solid#333;
+select:focus {
+    border-color: var(--main-bg-color);
+    outline: none;
+}
+
+/* Removing number spinner */
+input[type=number]::-webkit-outer-spin-button, 
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* 
+=====================================================================
+                          Section and Label Styles
+=====================================================================
+*/
+
+section {
+    margin-bottom: 20px;
+}
+
+section h2 {
+    border-bottom: 2px solid var(--main-bg-color);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+label {
+    display: inline-block;
+    font-size: 0.875em;
+    margin-right: 10px;
+}
+
+.majorLabel {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+label[for="race"], label[for="vocation"] {
+    display: block;
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+
+/* 
+=====================================================================
+                          Stats and Attributes Grid
+=====================================================================
+*/
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.attribute, .minor-stat {
+    border: 2px solid #333;
     background-color: #f4f4f4;
     padding: 8px;
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.attribute, .minor-stat {
     margin-bottom: 15px;
 }
 
@@ -143,52 +185,64 @@ button:hover {
     font-weight: bold;
 }
 
-.minor-stats {
+
+/* 
+=====================================================================
+                          Vocation Section Styles
+=====================================================================
+*/
+
+#vocation-section {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f4f4f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#vocation-section h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#vocation-output h3 {
+    font-size: 1.3rem;
+    color: #555;
+    margin-top: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+#vocation-output h4 {
+    font-size: 1.1rem;
+    color: #777;
     margin-top: 10px;
+    margin-bottom: 8px;
 }
 
-.minor-stat {
+#vocation-output p {
+    font-size: 1rem;
+    color: #444;
     margin-bottom: 5px;
 }
 
-.minor-stat label {
-    width: 120px;
+/* Magic Section Styling */
+#vocation-magic h4 {
+    color: #555;
 }
 
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+#vocation-magic p {
+    color: #333;
+    font-style: italic;
 }
 
-input[type=number] {
-    -moz-appearance: textfield;
-}
 
-label[for="race"], label[for="vocation"] {
-    display: block;
-    font-size: 1em;
-    margin-bottom: 5px;
-}
-
-select#race, select#vocation {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1em;
-    background-color: #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-select#race:focus, select#vocation:focus {
-    border-color: var(--main-bg-color);
-    outline: none;
-}
-
-#vocation-section, #race-section {
-    margin-bottom: 20px;
-}
+/* 
+=====================================================================
+                         Equipment and Skills Info
+=====================================================================
+*/
 
 #equipment-info, #skills-info {
     margin-top: 20px;
@@ -208,18 +262,40 @@ select#race:focus, select#vocation:focus {
     margin: 5px 0;
 }
 
-/* Mobile responsiveness */
-@media (max-width: 600px) {
-    body {
-        font-size: 14px;
+
+/* 
+=====================================================================
+                       Mobile Responsiveness
+=====================================================================
+*/
+
+@media (max-width: 768px) {
+    #vocation-section {
+        padding: 15px;
     }
 
-    .attribute input, .minor-stat input {
-        width: 100%;
+    #vocation-section h2 {
+        font-size: 1.3rem;
+    }
+
+    #vocation-output h3 {
+        font-size: 1.2rem;
+    }
+
+    #vocation-output h4 {
+        font-size: 1rem;
+    }
+
+    #vocation-output p {
+        font-size: 0.9rem;
     }
 
     .stats-grid {
         grid-template-columns: 1fr;
+    }
+
+    .attribute input, .minor-stat input {
+        width: 100%;
     }
 
     .box {
