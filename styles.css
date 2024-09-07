@@ -107,7 +107,7 @@ button:hover {
     margin: 50px auto;
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .attribute {
@@ -115,6 +115,7 @@ button:hover {
     background-color: #f4f4f4;
     padding: 8px;
     border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .attribute, .minor-stat {

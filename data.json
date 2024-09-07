@@ -1,30 +1,32 @@
 {
+    
     "races": {
         "madorian": {
             "name": "Madorian",
             "passive": "Leadership checks low cap at 10",
             "modifiers": {
                 "strength": 2,
-                "dexterity": 0,
-                "intelligence": 1,
-                "charisma": -1,
+                "dexterity": 2,
+                "intelligence": -1,
+                "charisma": 0,
                 "vitality": 0,
                 "ferocity": 0,
                 "arcana": 0,
-                "willpower": 2
+                "willpower": 0
             }
         },
         "novorian": {
             "name": "Novorian",
             "passive": "Wisdom can be used in place of a general Charisma check",
             "modifiers": {
-                "strength": 0,
-                "dexterity": 0,
-                "intelligence": 3,
-                "charisma": 0,
-                "vitality": -1,
+                "strength": 1,
+                "dexterity": 1,
+                "intelligence": 1,
+                "charisma": -2,
+                "vitality": 0,
                 "ferocity": 0,
-                "arcana": 1
+                "arcana": 0,
+                "willpower": 0
             }
         },
         "abrigian": {
@@ -32,12 +34,251 @@
             "passive": "Can use Willpower instead of Charisma during Charisma rolls",
             "modifiers": {
                 "strength": -1,
-                "dexterity": 2,
-                "intelligence": 0,
+                "dexterity": -1,
+                "intelligence": 2,
                 "charisma": 0,
-                "vitality": 1,
-                "ferocity": 0,
-                "arcana": 0
+                "vitality": 0,
+                "ferocity": 1,
+                "arcana": 0,
+                "willpower": 3
+            }
+        }
+    },
+    "vocations": {
+        "wanderer": {
+            "name": "The Wanderer",
+            "weaponry": [
+                {
+                    "name": "Butterfly Swords",
+                    "type": "Dual Wield",
+                    "damage": "1d4 + Dex * 2 SL"
+                },
+                {
+                    "name": "Art",
+                    "type": "Small Ranged Rail Gun",
+                    "damage": "1d6 PR 50ft"
+                },
+                {
+                    "name": "Carving Dagger",
+                    "type": "Dagger",
+                    "damage": "1 + Dex"
+                },
+                {
+                    "name": "Cloth Shirt",
+                    "type": "Armor",
+                    "armor": "0 AR"
+                },
+                {
+                    "name": "Fur Lined Leather Armor",
+                    "type": "Armor",
+                    "armor": "1 AR"
+                },
+                {
+                    "name": "Steel Toed Boots",
+                    "type": "Armor",
+                    "armor": "0 AR"
+                },
+                {
+                    "name": "Simple Pants",
+                    "type": "Clothing"
+                }
+            ],
+            "equipment": [
+                "Backpack/Satchel",
+                "100ft Rope",
+                "Small Cape",
+                "Flute",
+                "Small Medical Kit (Medicine +10)",
+                "Sewing Kit",
+                "Fire Kit",
+                "Knoll Watch",
+                "5 Lockpicks",
+                "233.5 GL",
+                "20 Art Pellets"
+            ],
+            "skills": [
+                {
+                    "name": "Dual Wielding [Dex]",
+                    "description": "You can dually wield Dex weapons you are proficient in"
+                },
+                {
+                    "name": "Close Snipe",
+                    "description": "Shooting an enemy within 10ft always results in a headshot"
+                },
+                {
+                    "name": "Flute Disarming",
+                    "description": "Flute playing calms creatures after a Performance check"
+                },
+                {
+                    "name": "Well Traveled",
+                    "description": "Recover health and willpower on short rest, resistant to environmental damage"
+                }
+            ]
+        },
+        "warrior": {
+            "name": "The Warrior",
+            "weaponry": [
+                {
+                    "name": "Hand-and-a-half Sword",
+                    "type": "Sword",
+                    "damage": "2d8 + Dex SL"
+                },
+                {
+                    "name": "Flanged Mace",
+                    "type": "Mace",
+                    "damage": "1d8 + Dex BL"
+                },
+                {
+                    "name": "Buckler",
+                    "type": "Shield",
+                    "effect": "Parries +1"
+                },
+                {
+                    "name": "Rapier",
+                    "type": "Sword",
+                    "damage": "1d10 + Dex PR"
+                },
+                {
+                    "name": "Falchion",
+                    "type": "Sword",
+                    "damage": "2d6 + Dex SL"
+                },
+                {
+                    "name": "Scale Mail",
+                    "type": "Armor",
+                    "armor": "3 AR"
+                },
+                {
+                    "name": "Steel Gauntlets",
+                    "type": "Armor",
+                    "effect": "Unarmed +1"
+                },
+                {
+                    "name": "Steel Boots",
+                    "type": "Armor"
+                },
+                {
+                    "name": "Simple Shirt and Pants",
+                    "type": "Clothing"
+                }
+            ],
+            "equipment": [
+                "Heavy Cloak",
+                "Knoll Watch",
+                "Sharpening Kit",
+                "94 GL",
+                "5 Powder Bombs (2d4 10ft radius)"
+            ],
+            "skills": [
+                {
+                    "name": "Weapon Master",
+                    "description": "Gain advantage when trying to learn a new melee weapon"
+                },
+                {
+                    "name": "Dexterous Fighter",
+                    "description": "Switch held weapon without using an action"
+                },
+                {
+                    "name": "Shoulder Bash [Hand-and-a-half Sword]",
+                    "description": "Bonus action to bash into a medium creature, unbalancing them"
+                },
+                {
+                    "name": "Tip Strike [Mace]",
+                    "description": "Bonus action to hit creature's head for 2 BL damage"
+                },
+                {
+                    "name": "Lunge [Rapier]",
+                    "description": "Lunge 5ft forward, deal 2 PR damage"
+                },
+                {
+                    "name": "Dodge Strike [Falchion]",
+                    "description": "Dodge 5ft while dealing 1d4 SL damage"
+                }
+            ]
+        },
+        "scholar": {
+            "name": "The Scholar",
+            "weaponry": [
+                {
+                    "name": "Iron Topaz Wand",
+                    "type": "Wand",
+                    "effect": "20 DR"
+                },
+                {
+                    "name": "Dagger",
+                    "type": "Dagger",
+                    "damage": "1d4 + Dex SL"
+                },
+                {
+                    "name": "Mage Robe",
+                    "type": "Armor"
+                },
+                {
+                    "name": "Simple Shirt, Pants, and Boots",
+                    "type": "Clothing"
+                }
+            ],
+            "equipment": [
+                "Light Cloak",
+                "Satchel",
+                "Cell Watch",
+                "Portable Alchemy Set",
+                "250 GL",
+                "1 Precious Gem of Choice",
+                "Herbarium (Native)",
+                "Bestiary (Native)",
+                "Sketch Book"
+            ],
+            "skills": [
+                {
+                    "name": "Dodge Strike [Dagger]",
+                    "description": "Dodge 5ft while dealing 1 SL damage"
+                },
+                {
+                    "name": "Counter Cadence",
+                    "description": "Copy a spell by repeating the incantation"
+                }
+            ],
+            "magic": {
+                "catalystic": [
+                    {
+                        "name": "Hardlight Bolt",
+                        "cost": "4 Dur",
+                        "effect": "1d4 + Int 40ft"
+                    },
+                    {
+                        "name": "Light Orb",
+                        "cost": "1 Dur",
+                        "effect": "Create dim light covering 20ft in a radius"
+                    },
+                    {
+                        "name": "Screech",
+                        "cost": "4 Dur",
+                        "effect": "Deafens those within 20ft if they fail a Resistance check"
+                    }
+                ],
+                "runic": [
+                    {
+                        "name": "Fire Rune",
+                        "cost": "2 Wil",
+                        "effect": "Deals 1d4 fire damage in melee range"
+                    },
+                    {
+                        "name": "Dark Rune",
+                        "cost": "4 Wil",
+                        "effect": "Deals 2 dark damage for 2 turns"
+                    },
+                    {
+                        "name": "Force Rune",
+                        "cost": "2 Wil",
+                        "effect": "Unbalances opponents on failed Str save"
+                    },
+                    {
+                        "name": "Halt Rune",
+                        "cost": "2 Wil",
+                        "effect": "Stops momentum of small objects; can be used as a reaction"
+                    }
+                ]
             }
         }
     }

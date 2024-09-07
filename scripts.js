@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Selectors for major stat inputs
+  // Selectors for major stat inputs (with willpower-innate and willpower-extended now)
   const majorStatSelectors = {
     strength: "strength",
     dexterity: "dexterity",
@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     vitality: "vitality",
     ferocity: "ferocity",
     arcana: "arcana",
+    willpowerInnate: "willpower-innate",
+    willpowerExtended: "willpower-extended",
   };
 
   // Selectors for the minor stat inputs
@@ -29,7 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to calculate modifiers for Str, Dex, Int, Chr, Vit
   function calculateStandardModifier(statValue) {
-    return Math.max(0, Math.floor((statValue - 10) / 2));
+    if (statValue >= 10) {
+      return Math.floor((statValue - 10) / 2); // +1 for every 2 points above 10
+    } else {
+      return Math.floor((statValue - 10) / 2); // -1 for every 2 points below 10
+    }
   }
 
   // Function to calculate the modifier for Fer and Arc
@@ -37,44 +43,55 @@ document.addEventListener("DOMContentLoaded", () => {
     return statValue;
   }
 
+  // Function to update Willpower
+  function updateWillpower() {
+    const willpowerInnateValue =
+      parseInt(document.getElementById("willpower-innate").value) || 0;
+    const willpowerExtendedValue =
+      parseInt(document.getElementById("willpower-extended").value) || 0;
+
+    // Update the Willpower display for both innate and extended
+    const willpowerModifierDisplay =
+      document.getElementById("willpower-modifier");
+    willpowerModifierDisplay.textContent = `Innate: ${willpowerInnateValue} (Extended: ${willpowerExtendedValue})`;
+  }
+
   // Function to update the modifiers in the HTML
   function updateModifiers() {
     Object.keys(majorStatSelectors).forEach((stat) => {
-      const majorStatInput = document.getElementById(majorStatSelectors[stat]);
-      const majorStatValue = parseInt(majorStatInput.value) || 0;
-      let modifier;
+      if (stat !== "willpowerInnate" && stat !== "willpowerExtended") {
+        const majorStatInput = document.getElementById(
+          majorStatSelectors[stat]
+        );
+        const majorStatValue = parseInt(majorStatInput.value) || 0;
+        let modifier;
 
-      if (["ferocity", "arcana"].includes(stat)) {
-        modifier = calculateDirectModifier(majorStatValue);
-      } else {
-        modifier = calculateStandardModifier(majorStatValue);
-      }
+        if (["ferocity", "arcana"].includes(stat)) {
+          modifier = calculateDirectModifier(majorStatValue);
+        } else {
+          modifier = calculateStandardModifier(majorStatValue);
+        }
 
-      // Update the major stat modifier span
-      document.getElementById(`${stat}-modifier`).textContent = ` ${modifier}`;
-
-      // Update all associated minor stat modifiers
-      if (minorStatSelectors[stat]) {
-        minorStatSelectors[stat].forEach((minorStat) => {
-          const minorStatInput = document.getElementById(minorStat);
-          const minorStatValue = parseInt(minorStatInput.value) || 0;
-
-          // Calculate final value by adding the major stat modifier and the minor stat input value
-          const finalMinorStatValue = modifier + minorStatValue;
-
-          // Update the span next to the minor stat input with the final value
-          document.getElementById(
-            `${minorStat}`
-          ).nextElementSibling.textContent = `${finalMinorStatValue}`;
-        });
+        // Update the major stat modifier span
+        document.getElementById(
+          `${stat}-modifier`
+        ).textContent = ` ${modifier}`;
       }
     });
+
+    // Update Willpower separately
+    updateWillpower();
   }
 
-  // Race data storage
-  let raceData = {};
+  // Add event listeners to all major stat inputs
+  Object.keys(majorStatSelectors).forEach((stat) => {
+    const inputElement = document.getElementById(majorStatSelectors[stat]);
+    if (inputElement) {
+      inputElement.addEventListener("input", updateModifiers);
+    }
+  });
 
-  // Fetch race data from data.json
+  // Load race data from JSON and initialize modifiers
   function loadRaceData() {
     fetch("data.json")
       .then((response) => response.json())
@@ -97,80 +114,160 @@ document.addEventListener("DOMContentLoaded", () => {
       race.passive;
     document.getElementById("char-passive-output").textContent = race.passive;
 
-    // Update the race stat modifiers (Strength, Dexterity, Intelligence, etc.)
+    // Update the race stat modifiers display (Strength, Dexterity, Intelligence, etc.)
+    document.getElementById(
+      "race-strength-modifier"
+    ).textContent = `Strength: ${race.modifiers.strength}`;
+    document.getElementById(
+      "race-dexterity-modifier"
+    ).textContent = `Dexterity: ${race.modifiers.dexterity}`;
+    document.getElementById(
+      "race-intelligence-modifier"
+    ).textContent = `Intelligence: ${race.modifiers.intelligence}`;
+    document.getElementById(
+      "race-charisma-modifier"
+    ).textContent = `Charisma: ${race.modifiers.charisma}`;
+    document.getElementById(
+      "race-vitality-modifier"
+    ).textContent = `Vitality: ${race.modifiers.vitality}`;
+    document.getElementById(
+      "race-ferocity-modifier"
+    ).textContent = `Ferocity: ${race.modifiers.ferocity}`;
+    document.getElementById(
+      "race-arcana-modifier"
+    ).textContent = `Arcana: ${race.modifiers.arcana}`;
+    document.getElementById(
+      "race-willpower-modifier"
+    ).textContent = `Willpower: ${race.modifiers.willpower}`;
+
+    // Apply the race modifiers to the form inputs (base stats)
     Object.keys(race.modifiers).forEach((stat) => {
-      const raceModifierElement = document.getElementById(
-        `race-${stat}-modifier`
-      );
-      const baseStatElement = document.getElementById(stat); // Ensure IDs match major stat inputs
-      if (raceModifierElement && baseStatElement) {
-        const baseStatValue = parseInt(baseStatElement.value) || 0;
+      const baseStatElement = document.getElementById(stat);
+      if (baseStatElement) {
         const raceModifier = race.modifiers[stat];
-
-        // Update the race modifier display
-        raceModifierElement.textContent = `${
-          stat.charAt(0).toUpperCase() + stat.slice(1)
-        }: ${raceModifier}`;
-
-        // Update the stat value in the input field (base stat + race modifier)
+        const baseStatValue = parseInt(baseStatElement.value) || 0;
         const modifiedStatValue = baseStatValue + raceModifier;
-        baseStatElement.value = modifiedStatValue;
 
-        // Update the major stat modifier on the character sheet
-        document.getElementById(
-          `${stat}-modifier`
-        ).textContent = `${calculateStandardModifier(modifiedStatValue)}`;
+        baseStatElement.value = modifiedStatValue;
+        document.getElementById(`${stat}-modifier`).textContent =
+          calculateStandardModifier(modifiedStatValue);
       }
     });
 
-    // Recalculate minor stat modifiers after applying race modifiers
+    // Apply the Willpower modifier to the "innate" Willpower stat
+    const willpowerInnateElement = document.getElementById("willpower-innate");
+    if (race.modifiers.willpower) {
+      const willpowerModifier = race.modifiers.willpower;
+      willpowerInnateElement.value =
+        parseInt(willpowerInnateElement.value || 0) + willpowerModifier;
+
+      // Trigger Willpower update to display the new values
+      updateWillpower();
+    }
+
+    // Recalculate all modifiers after applying race modifiers
     updateModifiers();
   }
 
-  // Event listener for race selection
+  // Race selection event listener
   document.getElementById("race").addEventListener("change", (event) => {
     const selectedRace = event.target.value;
     applyRaceModifiers(selectedRace);
 
-    // Update the race on the character sheet
     document.getElementById("char-race-output").textContent =
       selectedRace.charAt(0).toUpperCase() + selectedRace.slice(1);
   });
 
-  // Load race data and initialize modifiers when the page loads
+  // Initialize race data and stat modifiers on page load
   loadRaceData();
   updateModifiers();
-
-  // Add event listeners to all major and minor stat inputs
-  Object.keys(majorStatSelectors).forEach((stat) => {
-    const majorInput = document.getElementById(majorStatSelectors[stat]);
-    if (majorInput) {
-      majorInput.addEventListener("input", updateModifiers);
-    }
-
-    if (minorStatSelectors[stat]) {
-      minorStatSelectors[stat].forEach((minorStat) => {
-        const minorInput = document.getElementById(minorStat);
-        if (minorInput) {
-          minorInput.addEventListener("input", updateModifiers);
-        }
-      });
-    }
-  });
-
-  // Add event listener for Willpower input if it exists
-  const willpowerInput = document.getElementById("willpower");
-  if (willpowerInput) {
-    willpowerInput.addEventListener("input", updateWillpowerModifier);
-  }
 });
 
-// Function to update the Willpower innate value
-function updateWillpowerModifier() {
-  const willpowerInput = document.getElementById("willpower");
-  const willpowerValue = parseInt(willpowerInput.value) || 0;
+// Function to load vocation data from JSON and populate the character sheet
+function loadVocationData() {
+  fetch("data.json")
+    .then((response) => response.json())
+    .then((data) => {
+      // Get vocation data from JSON
+      const vocationData = data.vocations;
 
-  // Update the innate willpower value (innate matches willpower value)
-  const innateElement = document.getElementById("willpower-modifier");
-  innateElement.textContent = `Innate: ${willpowerValue} (Extended: 0)`;
+      // Add event listener for vocation selection
+      document
+        .getElementById("vocation")
+        .addEventListener("change", function (event) {
+          const selectedVocation = event.target.value;
+          applyVocationData(selectedVocation, vocationData);
+        });
+    })
+    .catch((error) => {
+      console.error("Error loading vocation data:", error);
+    });
 }
+
+// Function to apply vocation data to the character sheet
+function applyVocationData(selectedVocation, vocationData) {
+  if (!vocationData[selectedVocation]) return;
+
+  const vocation = vocationData[selectedVocation];
+
+  // Populate weaponry section
+  const weaponrySection = document.getElementById("vocation-weaponry");
+  weaponrySection.innerHTML = ""; // Clear previous data
+  vocation.weaponry.forEach((item) => {
+    const itemElement = document.createElement("p");
+    itemElement.textContent = `${item.name} (${item.type}) - Damage/Effect: ${
+      item.damage || item.effect || "N/A"
+    }`;
+    weaponrySection.appendChild(itemElement);
+  });
+
+  // Populate equipment section
+  const equipmentSection = document.getElementById("vocation-equipment");
+  equipmentSection.innerHTML = ""; // Clear previous data
+  vocation.equipment.forEach((item) => {
+    const itemElement = document.createElement("p");
+    itemElement.textContent = item;
+    equipmentSection.appendChild(itemElement);
+  });
+
+  // Populate skills section
+  const skillsSection = document.getElementById("vocation-skills");
+  skillsSection.innerHTML = ""; // Clear previous data
+  vocation.skills.forEach((skill) => {
+    const skillElement = document.createElement("p");
+    skillElement.textContent = `${skill.name}: ${skill.description}`;
+    skillsSection.appendChild(skillElement);
+  });
+
+  // Populate magic section (if the vocation has magic)
+  const magicSection = document.getElementById("vocation-magic");
+  magicSection.innerHTML = ""; // Clear previous data
+  if (vocation.magic) {
+    if (vocation.magic.catalystic) {
+      const catalysticHeading = document.createElement("h4");
+      catalysticHeading.textContent = "Catalystic Magic";
+      magicSection.appendChild(catalysticHeading);
+
+      vocation.magic.catalystic.forEach((spell) => {
+        const spellElement = document.createElement("p");
+        spellElement.textContent = `${spell.name} (Cost: ${spell.cost}) - Effect: ${spell.effect}`;
+        magicSection.appendChild(spellElement);
+      });
+    }
+
+    if (vocation.magic.runic) {
+      const runicHeading = document.createElement("h4");
+      runicHeading.textContent = "Runic Magic";
+      magicSection.appendChild(runicHeading);
+
+      vocation.magic.runic.forEach((spell) => {
+        const spellElement = document.createElement("p");
+        spellElement.textContent = `${spell.name} (Cost: ${spell.cost}) - Effect: ${spell.effect}`;
+        magicSection.appendChild(spellElement);
+      });
+    }
+  }
+}
+
+// Initialize vocation data when the page loads
+loadVocationData();
