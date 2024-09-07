@@ -283,38 +283,48 @@
             </section>
             
 
-            <section id="vocation-section">
-                <h2>Vocation Selection</h2>
-                <label for="vocation">Select Vocation:</label>
-                <select id="vocation" name="vocation">
-                  <option value="">--Choose a Vocation--</option>
-                  <option value="wanderer">The Wanderer</option>
-                  <option value="warrior">The Warrior</option>
-                  <option value="scholar">The Scholar</option>
-                </select>
-              
-                <div id="vocation-output">
-                  <h3>Vocation Details</h3>
-              
-                  <div id="vocation-weaponry">
-                    <h4>Weaponry</h4>
-                  </div>
-              
-                  <div id="vocation-equipment">
-                    <h4>Equipment</h4>
-                  </div>
-              
-                  <div id="vocation-skills">
-                    <h4>Skills</h4>
-                  </div>
-              
-                  <div id="vocation-magic">
-                    <h4>Magic</h4>
-                  </div>
-                </div>
-              </section>
-              
-    
+        <!-- Vocation Section -->
+<section id="vocation-section" class="box">
+    <h2>Vocation Selection</h2>
+    <label for="vocation">Select Vocation:</label>
+    <select id="vocation" name="vocation">
+        <option value="">--Choose a Vocation--</option>
+        <option value="warrior">Warrior</option>
+        <option value="scholar">Scholar</option>
+        <option value="wanderer">Wanderer</option>
+    </select>
+
+    <!-- Weaponry Section -->
+    <div id="vocation-weaponry-section">
+        <h3>Weaponry & Armor</h3>
+        <ul id="vocation-weaponry" class="vocation-list">
+            <li>No weaponry or armor selected yet.</li>
+        </ul>
+    </div>
+
+    <!-- Equipment Section -->
+    <div id="vocation-equipment-section">
+        <h3>Equipment</h3>
+        <ul id="vocation-equipment" class="vocation-list">
+            <li>No equipment selected yet.</li>
+        </ul>
+    </div>
+
+    <!-- Skills Section -->
+    <div id="vocation-skills-section">
+        <h3>Skills</h3>
+        <ul id="vocation-skills" class="vocation-list">
+            <li>No skills selected yet.</li>
+        </ul>
+    </div>
+
+    <!-- Magic Section -->
+    <div id="vocation-magic-section">
+        <h3>Magic</h3>
+        <ul id="vocation-magic" class="vocation-list">
+            <li>No magic selected yet.</li>
+        </ul>
+    </div>
 </section>
 
 

@@ -151,15 +151,18 @@
                 {
                     "name": "Steel Gauntlets",
                     "type": "Armor",
-                    "effect": "Unarmed +1"
+                    "effect": "Unarmed +1",
+                    "armor": "3 AR"
                 },
                 {
                     "name": "Steel Boots",
-                    "type": "Armor"
+                    "type": "Armor",
+                    "armor": "0 AR"
                 },
                 {
                     "name": "Simple Shirt and Pants",
                     "type": "Clothing"
+                    
                 }
             ],
             "equipment": [
@@ -211,7 +214,8 @@
                 },
                 {
                     "name": "Mage Robe",
-                    "type": "Armor"
+                    "type": "Armor",
+                    "armor": "0 AR"
                 },
                 {
                     "name": "Simple Shirt, Pants, and Boots",
