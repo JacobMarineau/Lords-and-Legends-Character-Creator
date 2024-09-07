@@ -31,107 +31,6 @@
 
             </section>
 
-            <label for="race">Select Race:</label>
-            <section id="race-section">
-                <h2>Race Selection</h2>
-                <label for="race">Select Race:</label>
-                <select id="race" name="race">
-                    <option value="">--Choose a Race--</option>
-                    <option value="madorian">Madorian</option>
-                    <option value="novorian">Novorian</option>
-                    <option value="abrigian">Abrigian</option>
-                </select>
-            
-                <div id="race-modifiers">
-                    <h3>Race Modifiers</h3>
-                    <p id="race-strength-modifier">Strength: 0</p>
-                    <p id="race-dexterity-modifier">Dexterity: 0</p>
-                    <!-- Add more race-based stats here -->
-                </div>
-            
-                <div id="race-passives">
-                    <h3>Race Passives</h3>
-                    <p id="race-passive-description">Select a race to see passive abilities</p>
-                </div>
-            </section>
-
-            
-            
-
-    <div id="race-modifiers">
-        <h3>Race Modifiers</h3>
-        <p id="race-strength-modifier">Strength: 0</p>
-        <p id="race-dexterity-modifier">Dexterity: 0</p>
-        <!-- Add more race-based stats here -->
-    </div>
-
-    <div id="race-passives">
-        <h3>Race Passives</h3>
-        <p id="race-passive-description">Select a race to see passive abilities</p>
-    </div>
-</section>
-
-
-<section id="race-passives">
-    <h2>Race Passives</h2>
-    <p id="madorian-passive" class="race-passive">Madorian Presence: Leadership checks low cap at 10</p>
-    <p id="novorian-passive" class="race-passive">Novorian Presence: Wisdom can be used in place of a general Charisma check</p>
-    <p id="abrigian-passive" class="race-passive">Abrigian Presence: Can use Willpower instead of Charisma during Charisma rolls</p>
-</section>
-
-<section id="vocation-section">
-    <h2>Vocation Selection</h2>
-    <label for="vocation">Select Vocation:</label>
-    <select id="vocation" name="vocation">
-        <option value="">--Choose a Vocation--</option>
-        <option value="wanderer">Wanderer</option>
-        <option value="warrior">Warrior</option>
-        <!-- More vocations here -->
-    </select>
-
-    <div id="vocation-equipment">
-        <h3>Equipment</h3>
-        <ul id="vocation-equipment-list">
-            <li id="vocation-armor">Armor: None</li>
-            <li id="vocation-weapons">Weapons: None</li>
-            <!-- Add other vocation-based items -->
-        </ul>
-    </div>
-    
-    <div id="vocation-skills">
-        <h3>Skills</h3>
-        <ul id="vocation-skills-list">
-            <li>No skills selected</li>
-        </ul>
-    </div>
-</section>
-
-
-  
-            <section id="stats">
-                <h2>Stats</h2>
-                <div class="stat">
-                    <label for="hp">Hit Points (HP):</label>
-                    <input type="number" id="hp" name="hp" min="0" value="0">
-                </div>
-                <div class="stat">
-                    <label for="thp">Temporary Hit Points (THP):</label>
-                    <input type="number" id="thp" name="thp" min="0" value="0">
-                </div>
-                <div class="stat">
-                    <label for="ar">Armor Rating (AR):</label>
-                    <input type="number" id="ar" name="ar" min="0" value="0">
-                </div>
-                <div class="stat">
-                    <label for="mr">Magic Resistance (MR):</label>
-                    <input type="number" id="mr" name="mr" min="0" value="0">
-                </div>
-                <div class="stat">
-                    <label for="os">Over-Shields (OS):</label>
-                    <input type="number" id="os" name="os" min="0" value="0">
-                </div>
-            </section>
-            
             <section id="stats-section" class="box">
                 <h2>Stats</h2>
                 <div class="stats-grid">
@@ -346,6 +245,90 @@
                 </div>
             </section>
             
+
+            <label for="race">Select Race:</label>
+            <section id="race-section" class="box">
+                <h2>Race Selection</h2>
+                <label for="race">Select Race:</label>
+                <select id="race" name="race">
+                    <option value="">--Choose a Race--</option>
+                    <option value="madorian">Madorian</option>
+                    <option value="novorian">Novorian</option>
+                    <option value="abrigian">Abrigian</option>
+                </select>
+            
+                <div id="race-modifiers">
+                    <h3>Race Modifiers</h3>
+                    <p id="race-strength-modifier">Strength: 0</p>
+                    <p id="race-dexterity-modifier">Dexterity: 0</p>
+                    <p id="race-intelligence-modifier">Intelligence: 0</p>
+                    <p id="race-charisma-modifier">Charisma: 0</p>
+                    <p id="race-vitality-modifier">Vitality: 0</p>
+                    <p id="race-ferocity-modifier">Ferocity: 0</p>
+                    <p id="race-arcana-modifier">Arcana: 0</p>
+                </div>
+            
+                <div id="race-passives">
+                    <h3>Race Passives</h3>
+                    <p id="race-passive-description">Select a race to see passive abilities</p>
+                </div>
+            </section>
+            
+
+<section id="vocation-section">
+    <h2>Vocation Selection</h2>
+    <label for="vocation">Select Vocation:</label>
+    <select id="vocation" name="vocation">
+        <option value="">--Choose a Vocation--</option>
+        <option value="wanderer">Wanderer</option>
+        <option value="warrior">Warrior</option>
+        <!-- More vocations here -->
+    </select>
+
+    <div id="vocation-equipment">
+        <h3>Equipment</h3>
+        <ul id="vocation-equipment-list">
+            <li id="vocation-armor">Armor: None</li>
+            <li id="vocation-weapons">Weapons: None</li>
+            <!-- Add other vocation-based items -->
+        </ul>
+    </div>
+    
+    <div id="vocation-skills">
+        <h3>Skills</h3>
+        <ul id="vocation-skills-list">
+            <li>No skills selected</li>
+        </ul>
+    </div>
+</section>
+
+
+  
+            <section id="stats">
+                <h2>Stats</h2>
+                <div class="stat">
+                    <label for="hp">Hit Points (HP):</label>
+                    <input type="number" id="hp" name="hp" min="0" value="0">
+                </div>
+                <div class="stat">
+                    <label for="thp">Temporary Hit Points (THP):</label>
+                    <input type="number" id="thp" name="thp" min="0" value="0">
+                </div>
+                <div class="stat">
+                    <label for="ar">Armor Rating (AR):</label>
+                    <input type="number" id="ar" name="ar" min="0" value="0">
+                </div>
+                <div class="stat">
+                    <label for="mr">Magic Resistance (MR):</label>
+                    <input type="number" id="mr" name="mr" min="0" value="0">
+                </div>
+                <div class="stat">
+                    <label for="os">Over-Shields (OS):</label>
+                    <input type="number" id="os" name="os" min="0" value="0">
+                </div>
+            </section>
+            
+          
             
             <!-- Additional sections for Skills, Equipment, etc. -->
 

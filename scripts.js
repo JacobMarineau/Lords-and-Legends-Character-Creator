@@ -45,17 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
       let modifier;
 
       if (["ferocity", "arcana"].includes(stat)) {
-        // Ferocity and Arcana use direct value as modifier
         modifier = calculateDirectModifier(majorStatValue);
       } else {
-        // Standard stats (Str, Dex, Int, Chr, Vit) use the 2 points above 10 rule
         modifier = calculateStandardModifier(majorStatValue);
       }
 
       // Update the major stat modifier span
-      document.getElementById(
-        `${stat}-modifier`
-      ).textContent = `Modifier: ${modifier}`;
+      document.getElementById(`${stat}-modifier`).textContent = ` ${modifier}`;
 
       // Update all associated minor stat modifiers
       if (minorStatSelectors[stat]) {
@@ -69,30 +65,109 @@ document.addEventListener("DOMContentLoaded", () => {
           // Update the span next to the minor stat input with the final value
           document.getElementById(
             `${minorStat}`
-          ).nextElementSibling.textContent = `Modifier: ${finalMinorStatValue}`;
+          ).nextElementSibling.textContent = `${finalMinorStatValue}`;
         });
       }
     });
   }
 
-  // Add event listeners to all major stat and minor stat inputs
-  Object.values(majorStatSelectors).forEach((stat) => {
-    const inputElement = document.getElementById(stat);
-    if (inputElement) {
-      inputElement.addEventListener("input", updateModifiers);
-    }
-  });
+  // Race data storage
+  let raceData = {};
 
-  // Add event listeners to all minor stat inputs
-  Object.keys(minorStatSelectors).forEach((majorStat) => {
-    minorStatSelectors[majorStat].forEach((minorStat) => {
-      const inputElement = document.getElementById(minorStat);
-      if (inputElement) {
-        inputElement.addEventListener("input", updateModifiers);
+  // Fetch race data from data.json
+  function loadRaceData() {
+    fetch("data.json")
+      .then((response) => response.json())
+      .then((data) => {
+        raceData = data.races;
+      })
+      .catch((error) => {
+        console.error("Error loading race data:", error);
+      });
+  }
+
+  // Function to apply race modifiers and update character sheet
+  function applyRaceModifiers(selectedRace) {
+    if (!raceData[selectedRace]) return;
+
+    const race = raceData[selectedRace];
+
+    // Update the race passive section in the form and character sheet
+    document.getElementById("race-passive-description").textContent =
+      race.passive;
+    document.getElementById("char-passive-output").textContent = race.passive;
+
+    // Update the race stat modifiers (Strength, Dexterity, Intelligence, etc.)
+    Object.keys(race.modifiers).forEach((stat) => {
+      const raceModifierElement = document.getElementById(
+        `race-${stat}-modifier`
+      );
+      const baseStatElement = document.getElementById(stat); // Ensure IDs match major stat inputs
+      if (raceModifierElement && baseStatElement) {
+        const baseStatValue = parseInt(baseStatElement.value) || 0;
+        const raceModifier = race.modifiers[stat];
+
+        // Update the race modifier display
+        raceModifierElement.textContent = `${
+          stat.charAt(0).toUpperCase() + stat.slice(1)
+        }: ${raceModifier}`;
+
+        // Update the stat value in the input field (base stat + race modifier)
+        const modifiedStatValue = baseStatValue + raceModifier;
+        baseStatElement.value = modifiedStatValue;
+
+        // Update the major stat modifier on the character sheet
+        document.getElementById(
+          `${stat}-modifier`
+        ).textContent = `${calculateStandardModifier(modifiedStatValue)}`;
       }
     });
+
+    // Recalculate minor stat modifiers after applying race modifiers
+    updateModifiers();
+  }
+
+  // Event listener for race selection
+  document.getElementById("race").addEventListener("change", (event) => {
+    const selectedRace = event.target.value;
+    applyRaceModifiers(selectedRace);
+
+    // Update the race on the character sheet
+    document.getElementById("char-race-output").textContent =
+      selectedRace.charAt(0).toUpperCase() + selectedRace.slice(1);
   });
 
-  // Initialize modifiers when the page loads
+  // Load race data and initialize modifiers when the page loads
+  loadRaceData();
   updateModifiers();
+
+  // Add event listeners to all major and minor stat inputs
+  Object.keys(majorStatSelectors).forEach((stat) => {
+    const majorInput = document.getElementById(majorStatSelectors[stat]);
+    if (majorInput) {
+      majorInput.addEventListener("input", updateModifiers);
+    }
+    const willpowerInput = document.getElementById("willpower");
+    if (willpowerInput) {
+      willpowerInput.addEventListener("input", updateWillpowerModifier);
+    }
+
+    if (minorStatSelectors[stat]) {
+      minorStatSelectors[stat].forEach((minorStat) => {
+        const minorInput = document.getElementById(minorStat);
+        if (minorInput) {
+          minorInput.addEventListener("input", updateModifiers);
+        }
+      });
+    }
+  });
 });
+
+function updateWillpowerModifier() {
+  const willpowerInput = document.getElementById("willpower");
+  const willpowerValue = parseInt(willpowerInput.value) || 0;
+  console.log(willpowerValue);
+  // Update the innate willpower value (innate matches willpower value)
+  const innateElement = document.getElementById("willpower-modifier");
+  innateElement.textContent = `Innate: ${willpowerValue} (Extended: 0)`;
+}
