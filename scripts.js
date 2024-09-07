@@ -147,10 +147,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (majorInput) {
       majorInput.addEventListener("input", updateModifiers);
     }
-    const willpowerInput = document.getElementById("willpower");
-    if (willpowerInput) {
-      willpowerInput.addEventListener("input", updateWillpowerModifier);
-    }
 
     if (minorStatSelectors[stat]) {
       minorStatSelectors[stat].forEach((minorStat) => {
@@ -161,12 +157,19 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
+
+  // Add event listener for Willpower input if it exists
+  const willpowerInput = document.getElementById("willpower");
+  if (willpowerInput) {
+    willpowerInput.addEventListener("input", updateWillpowerModifier);
+  }
 });
 
+// Function to update the Willpower innate value
 function updateWillpowerModifier() {
   const willpowerInput = document.getElementById("willpower");
   const willpowerValue = parseInt(willpowerInput.value) || 0;
-  console.log(willpowerValue);
+
   // Update the innate willpower value (innate matches willpower value)
   const innateElement = document.getElementById("willpower-modifier");
   innateElement.textContent = `Innate: ${willpowerValue} (Extended: 0)`;
