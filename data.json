@@ -44,246 +44,285 @@
             }
         }
     },
-    "vocations": {
-        "wanderer": {
+    
+        "vocations": {
+          "wanderer": {
             "name": "The Wanderer",
+            "minorStatBonuses": {
+              "medicine": 2,
+              "performance": 2,
+              "constitution": 2,
+              "athletics": 2,
+              "foraging": 2,
+              "carving": 2
+            },
+            "microStats": {
+              "light-armor": 0,
+              "butterfly-swords": 0,
+              "arts": 0,
+              "flute": 0
+            },
             "weaponry": [
-                {
-                    "name": "Butterfly Swords",
-                    "type": "Dual Wield",
-                    "damage": "1d4 + Dex * 2 SL"
-                },
-                {
-                    "name": "Art",
-                    "type": "Small Ranged Rail Gun",
-                    "damage": "1d6 PR 50ft"
-                },
-                {
-                    "name": "Carving Dagger",
-                    "type": "Dagger",
-                    "damage": "1 + Dex"
-                },
-                {
-                    "name": "Cloth Shirt",
-                    "type": "Armor",
-                    "armor": "0 AR"
-                },
-                {
-                    "name": "Fur Lined Leather Armor",
-                    "type": "Armor",
-                    "armor": "1 AR"
-                },
-                {
-                    "name": "Steel Toed Boots",
-                    "type": "Armor",
-                    "armor": "0 AR"
-                },
-                {
-                    "name": "Simple Pants",
-                    "type": "Clothing"
-                }
+              {
+                "name": "Butterfly Swords",
+                "type": "Dual Wield",
+                "damage": "1d4 + Dex * 2 SL"
+              },
+              {
+                "name": "Art",
+                "type": "Small Ranged Rail Gun",
+                "damage": "1d6 PR 50ft"
+              },
+              {
+                "name": "Carving Dagger",
+                "type": "Dagger",
+                "damage": "1 + Dex"
+              },
+              {
+                "name": "Cloth Shirt",
+                "type": "Armor",
+                "armor": "0 AR"
+              },
+              {
+                "name": "Fur Lined Leather Armor",
+                "type": "Armor",
+                "armor": "1 AR"
+              },
+              {
+                "name": "Steel Toed Boots",
+                "type": "Armor",
+                "armor": "0 AR"
+              },
+              {
+                "name": "Simple Pants",
+                "type": "Clothing"
+              }
             ],
             "equipment": [
-                "Backpack/Satchel",
-                "100ft Rope",
-                "Small Cape",
-                "Flute",
-                "Small Medical Kit (Medicine +10)",
-                "Sewing Kit",
-                "Fire Kit",
-                "Knoll Watch",
-                "5 Lockpicks",
-                "233.5 GL",
-                "20 Art Pellets"
+              "Backpack/Satchel",
+              "100ft Rope",
+              "Small Cape",
+              "Flute",
+              "Small Medical Kit (Medicine +10)",
+              "Sewing Kit",
+              "Fire Kit",
+              "Knoll Watch",
+              "5 Lockpicks",
+              "233.5 GL",
+              "20 Art Pellets"
             ],
             "skills": [
-                {
-                    "name": "Dual Wielding [Dex]",
-                    "description": "You can dually wield Dex weapons you are proficient in"
-                },
-                {
-                    "name": "Close Snipe",
-                    "description": "Shooting an enemy within 10ft always results in a headshot"
-                },
-                {
-                    "name": "Flute Disarming",
-                    "description": "Flute playing calms creatures after a Performance check"
-                },
-                {
-                    "name": "Well Traveled",
-                    "description": "Recover health and willpower on short rest, resistant to environmental damage"
-                }
+              {
+                "name": "Dual Wielding [Dex]",
+                "description": "You can dual-wield Dex weapons you are proficient in"
+              },
+              {
+                "name": "Close Snipe",
+                "description": "Shooting an enemy within 10ft always results in a headshot"
+              },
+              {
+                "name": "Flute Disarming",
+                "description": "Flute playing calms creatures after a Performance check"
+              },
+              {
+                "name": "Well Traveled",
+                "description": "Recover health and willpower on short rest, resistant to environmental damage"
+              }
             ]
-        },
-        "warrior": {
+          },
+          "warrior": {
             "name": "The Warrior",
+            "minorStatBonuses": {
+              "intimidation": 3,
+              "physical-save": 2,
+              "weapon-mastery": 2,
+              "leadership": 1
+            },
+            "microStats": {
+              "medium-armor": 0,
+              "hand-and-a-half-sword": 0,
+              "mace": 0,
+              "buckler": 0,
+              "rapier": 0,
+              "falchion": 0,
+              "hand-to-hand": 0
+            },
             "weaponry": [
-                {
-                    "name": "Hand-and-a-half Sword",
-                    "type": "Sword",
-                    "damage": "2d8 + Dex SL"
-                },
-                {
-                    "name": "Flanged Mace",
-                    "type": "Mace",
-                    "damage": "1d8 + Dex BL"
-                },
-                {
-                    "name": "Buckler",
-                    "type": "Shield",
-                    "effect": "Parries +1"
-                },
-                {
-                    "name": "Rapier",
-                    "type": "Sword",
-                    "damage": "1d10 + Dex PR"
-                },
-                {
-                    "name": "Falchion",
-                    "type": "Sword",
-                    "damage": "2d6 + Dex SL"
-                },
-                {
-                    "name": "Scale Mail",
-                    "type": "Armor",
-                    "armor": "3 AR"
-                },
-                {
-                    "name": "Steel Gauntlets",
-                    "type": "Armor",
-                    "effect": "Unarmed +1",
-                    "armor": "3 AR"
-                },
-                {
-                    "name": "Steel Boots",
-                    "type": "Armor",
-                    "armor": "0 AR"
-                },
-                {
-                    "name": "Simple Shirt and Pants",
-                    "type": "Clothing"
-                    
-                }
+              {
+                "name": "Hand-and-a-half Sword",
+                "type": "Sword",
+                "damage": "2d8 + Dex SL"
+              },
+              {
+                "name": "Flanged Mace",
+                "type": "Mace",
+                "damage": "1d8 + Dex BL"
+              },
+              {
+                "name": "Buckler",
+                "type": "Shield",
+                "effect": "Parries +1"
+              },
+              {
+                "name": "Rapier",
+                "type": "Sword",
+                "damage": "1d10 + Dex PR"
+              },
+              {
+                "name": "Falchion",
+                "type": "Sword",
+                "damage": "2d6 + Dex SL"
+              },
+              {
+                "name": "Scale Mail",
+                "type": "Armor",
+                "armor": "3 AR"
+              },
+              {
+                "name": "Steel Gauntlets",
+                "type": "Armor",
+                "effect": "Unarmed +1"
+              },
+              {
+                "name": "Steel Boots",
+                "type": "Armor"
+              },
+              {
+                "name": "Simple Shirt and Pants",
+                "type": "Clothing"
+              }
             ],
             "equipment": [
-                "Heavy Cloak",
-                "Knoll Watch",
-                "Sharpening Kit",
-                "94 GL",
-                "5 Powder Bombs (2d4 10ft radius)"
+              "Heavy Cloak",
+              "Knoll Watch",
+              "Sharpening Kit",
+              "94 GL",
+              "5 Powder Bombs (2d4 10ft radius)"
             ],
             "skills": [
-                {
-                    "name": "Weapon Master",
-                    "description": "Gain advantage when trying to learn a new melee weapon"
-                },
-                {
-                    "name": "Dexterous Fighter",
-                    "description": "Switch held weapon without using an action"
-                },
-                {
-                    "name": "Shoulder Bash [Hand-and-a-half Sword]",
-                    "description": "Bonus action to bash into a medium creature, unbalancing them"
-                },
-                {
-                    "name": "Tip Strike [Mace]",
-                    "description": "Bonus action to hit creature's head for 2 BL damage"
-                },
-                {
-                    "name": "Lunge [Rapier]",
-                    "description": "Lunge 5ft forward, deal 2 PR damage"
-                },
-                {
-                    "name": "Dodge Strike [Falchion]",
-                    "description": "Dodge 5ft while dealing 1d4 SL damage"
-                }
+              {
+                "name": "Weapon Master",
+                "description": "Gain advantage when trying to learn a new melee weapon"
+              },
+              {
+                "name": "Dexterous Fighter",
+                "description": "Switch held weapon without using an action"
+              },
+              {
+                "name": "Shoulder Bash [Hand-and-a-half Sword]",
+                "description": "Bonus action to bash into a medium creature, unbalancing them"
+              },
+              {
+                "name": "Tip Strike [Mace]",
+                "description": "Bonus action to hit creature's head for 2 BL damage"
+              },
+              {
+                "name": "Lunge [Rapier]",
+                "description": "Lunge 5ft forward, deal 2 PR damage"
+              },
+              {
+                "name": "Dodge Strike [Falchion]",
+                "description": "Dodge 5ft while dealing 1d4 SL damage"
+              }
             ]
-        },
-        "scholar": {
+          },
+          "scholar": {
             "name": "The Scholar",
+            "minorStatBonuses": {
+              "magical-knowledge": 3,
+              "history": 1
+            },
+            "microStats": {
+              "wands": 0,
+              "staffs": 0,
+              "catalystic-magic": 0,
+              "runic-magic": 0
+            },
             "weaponry": [
-                {
-                    "name": "Iron Topaz Wand",
-                    "type": "Wand",
-                    "effect": "20 DR"
-                },
-                {
-                    "name": "Dagger",
-                    "type": "Dagger",
-                    "damage": "1d4 + Dex SL"
-                },
-                {
-                    "name": "Mage Robe",
-                    "type": "Armor",
-                    "armor": "0 AR"
-                },
-                {
-                    "name": "Simple Shirt, Pants, and Boots",
-                    "type": "Clothing"
-                }
+              {
+                "name": "Iron Topaz Wand",
+                "type": "Wand",
+                "effect": "20 DR"
+              },
+              {
+                "name": "Dagger",
+                "type": "Dagger",
+                "damage": "1d4 + Dex SL"
+              },
+              {
+                "name": "Mage Robe",
+                "type": "Armor",
+                "armor": "0 AR"
+              },
+              {
+                "name": "Simple Shirt, Pants, and Boots",
+                "type": "Clothing"
+              }
             ],
             "equipment": [
-                "Light Cloak",
-                "Satchel",
-                "Cell Watch",
-                "Portable Alchemy Set",
-                "250 GL",
-                "1 Precious Gem of Choice",
-                "Herbarium (Native)",
-                "Bestiary (Native)",
-                "Sketch Book"
+              "Light Cloak",
+              "Satchel",
+              "Cell Watch",
+              "Portable Alchemy Set",
+              "250 GL",
+              "1 Precious Gem of Choice",
+              "Herbarium (Native)",
+              "Bestiary (Native)",
+              "Sketch Book"
             ],
             "skills": [
-                {
-                    "name": "Dodge Strike [Dagger]",
-                    "description": "Dodge 5ft while dealing 1 SL damage"
-                },
-                {
-                    "name": "Counter Cadence",
-                    "description": "Copy a spell by repeating the incantation"
-                }
+              {
+                "name": "Dodge Strike [Dagger]",
+                "description": "Dodge 5ft while dealing 1 SL damage"
+              },
+              {
+                "name": "Counter Cadence",
+                "description": "Copy a spell by repeating the incantation"
+              }
             ],
             "magic": {
-                "catalystic": [
-                    {
-                        "name": "Hardlight Bolt",
-                        "cost": "4 Dur",
-                        "effect": "1d4 + Int 40ft"
-                    },
-                    {
-                        "name": "Light Orb",
-                        "cost": "1 Dur",
-                        "effect": "Create dim light covering 20ft in a radius"
-                    },
-                    {
-                        "name": "Screech",
-                        "cost": "4 Dur",
-                        "effect": "Deafens those within 20ft if they fail a Resistance check"
-                    }
-                ],
-                "runic": [
-                    {
-                        "name": "Fire Rune",
-                        "cost": "2 Wil",
-                        "effect": "Deals 1d4 fire damage in melee range"
-                    },
-                    {
-                        "name": "Dark Rune",
-                        "cost": "4 Wil",
-                        "effect": "Deals 2 dark damage for 2 turns"
-                    },
-                    {
-                        "name": "Force Rune",
-                        "cost": "2 Wil",
-                        "effect": "Unbalances opponents on failed Str save"
-                    },
-                    {
-                        "name": "Halt Rune",
-                        "cost": "2 Wil",
-                        "effect": "Stops momentum of small objects; can be used as a reaction"
-                    }
-                ]
+              "catalystic": [
+                {
+                  "name": "Hardlight Bolt",
+                  "cost": "4 Dur",
+                  "effect": "1d4 + Int 40ft"
+                },
+                {
+                  "name": "Light Orb",
+                  "cost": "1 Dur",
+                  "effect": "Create dim light covering 20ft in a radius"
+                },
+                {
+                  "name": "Screech",
+                  "cost": "4 Dur",
+                  "effect": "Deafens those within 20ft if they fail a Resistance check"
+                }
+              ],
+              "runic": [
+                {
+                  "name": "Fire Rune",
+                  "cost": "2 Wil",
+                  "effect": "Deals 1d4 fire damage in melee range"
+                },
+                {
+                  "name": "Dark Rune",
+                  "cost": "4 Wil",
+                  "effect": "Deals 2 dark damage for 2 turns"
+                },
+                {
+                  "name": "Force Rune",
+                  "cost": "2 Wil",
+                  "effect": "Unbalances opponents on failed Str save"
+                },
+                {
+                  "name": "Halt Rune",
+                  "cost": "2 Wil",
+                  "effect": "Stops momentum of small objects; can be used as a reaction"
+                }
+              ]
             }
+          }
         }
-    }
-}
+      }
+      
+
