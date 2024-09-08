@@ -179,13 +179,86 @@ document.addEventListener("DOMContentLoaded", () => {
   updateModifiers();
 });
 
-// Apply vocation data and update the vocation section of the character sheet
+let userInputValues = {}; // Store original values for each stat
+
+// Function to calculate the major stat modifier
+function calculateMajorStatModifier(statValue) {
+  if (statValue >= 10) {
+    return Math.floor((statValue - 10) / 2); // For every 2 points above 10, +1 modifier
+  } else {
+    return Math.floor((statValue - 10) / 2); // For every 2 points below 10, -1 modifier
+  }
+}
+
+// Function to store user input for major stats
+function storeUserInputValues() {
+  const minorStatElements = document.querySelectorAll(".minor-stat-input");
+  minorStatElements.forEach((input) => {
+    const statId = input.id;
+    userInputValues[statId] = parseInt(input.value) || 0; // Store the current user input
+  });
+}
+
+// Function to apply the user's stat input values and then add vocation bonuses
 function applyVocationData(selectedVocation, vocationData) {
   if (!vocationData[selectedVocation]) return;
 
   const vocation = vocationData[selectedVocation];
 
-  // Populate weaponry and armor section
+  // Reset minor stats to user input values first
+  resetMinorStatsToUserInput();
+
+  // Apply vocation bonuses to the minor stats
+  applyVocationMinorStatBonuses(vocation.minorStatBonuses);
+
+  // Populate other vocation-related sections (equipment, weaponry, etc.)
+  populateVocationSections(vocation);
+}
+
+// Function to reset the minor stats to user input values
+function resetMinorStatsToUserInput() {
+  const minorStatElements = document.querySelectorAll(".minor-stat-input");
+  minorStatElements.forEach((input) => {
+    const statId = input.id;
+    input.value = userInputValues[statId] || 0; // Reset stat to user input value
+    document.querySelector(
+      `#${statId} + .minor-stat-modifier`
+    ).textContent = ` ${userInputValues[statId] || 0}`;
+  });
+}
+
+// Apply vocation bonuses to minor stats by adding to the major stat modifier
+function applyVocationMinorStatBonuses(minorStatBonuses) {
+  if (!minorStatBonuses) return;
+
+  Object.keys(minorStatBonuses).forEach((minorStat) => {
+    const majorStatElement = document.getElementById(minorStat); // Assuming minor stat is related to a major stat
+    const majorStatValue = parseInt(majorStatElement.value) || 10; // Get the major stat value
+    const majorStatModifier = calculateMajorStatModifier(majorStatValue); // Get the modifier for that major stat
+    const vocationBonus = minorStatBonuses[minorStat]; // Get the vocation bonus
+
+    const finalValue = majorStatModifier + vocationBonus; // Add the vocation bonus to the major stat modifier
+    document.querySelector(
+      `#${minorStat} + .minor-stat-modifier`
+    ).textContent = ` ${finalValue}`;
+  });
+}
+
+// Update modifiers when the user changes a minor stat manually
+function handleMinorStatInput() {
+  const minorStatElements = document.querySelectorAll(".minor-stat-input");
+  minorStatElements.forEach((input) => {
+    input.addEventListener("input", () => {
+      const statId = input.id;
+      userInputValues[statId] = parseInt(input.value) || 0;
+      applyVocationMinorStatBonuses(vocationData[selectedVocation]); // Reapply bonuses after user input change
+    });
+  });
+}
+
+// Function to populate vocation-specific sections like equipment, skills, and magic
+function populateVocationSections(vocation) {
+  // Populate weaponry, armor, equipment, skills, etc. (Similar to previous functions)
   const weaponrySection = document.getElementById("vocation-weaponry");
   weaponrySection.innerHTML = ""; // Clear previous data
   vocation.weaponry.forEach((item) => {
@@ -202,7 +275,6 @@ function applyVocationData(selectedVocation, vocationData) {
     weaponrySection.appendChild(itemElement);
   });
 
-  // Populate equipment section
   const equipmentSection = document.getElementById("vocation-equipment");
   equipmentSection.innerHTML = ""; // Clear previous data
   vocation.equipment.forEach((item) => {
@@ -211,7 +283,6 @@ function applyVocationData(selectedVocation, vocationData) {
     equipmentSection.appendChild(itemElement);
   });
 
-  // Populate skills section
   const skillsSection = document.getElementById("vocation-skills");
   skillsSection.innerHTML = ""; // Clear previous data
   vocation.skills.forEach((skill) => {
@@ -219,36 +290,9 @@ function applyVocationData(selectedVocation, vocationData) {
     skillElement.textContent = `${skill.name}: ${skill.description}`;
     skillsSection.appendChild(skillElement);
   });
-
-  // Populate magic section (if applicable)
-  const magicSection = document.getElementById("vocation-magic");
-  magicSection.innerHTML = ""; // Clear previous data
-  if (vocation.magic) {
-    if (vocation.magic.catalystic) {
-      const catalysticHeading = document.createElement("h4");
-      catalysticHeading.textContent = "Catalystic Magic";
-      magicSection.appendChild(catalysticHeading);
-      vocation.magic.catalystic.forEach((spell) => {
-        const spellElement = document.createElement("li");
-        spellElement.textContent = `${spell.name} (Cost: ${spell.cost}) - Effect: ${spell.effect}`;
-        magicSection.appendChild(spellElement);
-      });
-    }
-
-    if (vocation.magic.runic) {
-      const runicHeading = document.createElement("h4");
-      runicHeading.textContent = "Runic Magic";
-      magicSection.appendChild(runicHeading);
-      vocation.magic.runic.forEach((spell) => {
-        const spellElement = document.createElement("li");
-        spellElement.textContent = `${spell.name} (Cost: ${spell.cost}) - Effect: ${spell.effect}`;
-        magicSection.appendChild(spellElement);
-      });
-    }
-  }
 }
 
-// Fetch vocation data from data.json and set up event listener
+// Fetch vocation data and add event listener
 function loadVocationData() {
   fetch("data.json")
     .then((response) => response.json())
@@ -262,6 +306,8 @@ function loadVocationData() {
           const selectedVocation = event.target.value;
           applyVocationData(selectedVocation, vocationData);
         });
+
+      handleMinorStatInput(); // Ensure user inputs are tracked
     })
     .catch((error) => {
       console.error("Error loading vocation data:", error);
@@ -270,3 +316,4 @@ function loadVocationData() {
 
 // Call this function to load vocation data on page load
 loadVocationData();
+storeUserInputValues(); // Store initial user input values
