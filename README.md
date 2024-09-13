@@ -53,7 +53,7 @@ How to Run
 Download/Clone the repository: You can clone the repository using the following command:
 bash
 Copy code
-git clone <repository-url>
+git clone (https://github.com/JacobMarineau/Lords-and-Legends-Character-Creator.git)
 Open index.html in a browser: The app is a client-side application, so you just need to open index.html in any browser to start using it.
 You may need to run a local server to serve the JSON file properly. You can use a tool like Live Server or run:
 bash
