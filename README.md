@@ -28,12 +28,13 @@ The **Lords & Legends Character Creator** is a web-based tool for creating and m
 
 ## Project Structure
 
-
+```bash
 ├── index.html         # Main HTML file for the character creator
 ├── styles.css         # Stylesheet for the UI
 ├── scripts.js         # JavaScript logic for dynamic updates
 ├── data.json          # Data file for races, vocations, and bonuses
 └── README.md          # Project documentation
+```
 ## index.html
 This file contains the structure for the UI, including the form inputs for stats, dropdowns for race and vocation selection, and sections for displaying the character sheet.
 
@@ -64,14 +65,14 @@ Detailed Explanation
 ## Major Stats
 ### The following major stats are supported:
 
-Charisma: (Persuasion, Deception, Bargaining, Performance, Charm)
-Strength: (Acrobatics, Athletics, Agility, Lifting)
-Dexterity: (Sleight of Hand, Stealth, Medicine, Weapon Mastery, Carving)
-Intelligence: (History, Wisdom, Science, Technology, Foraging)
-Vitality: (Endurance, Resistance)
-Willpower: (Feat of Heroism, Leadership, Counter-Charisma)
-Arcana: (Magical Knowledge, Magic Save Modifier)
-Ferocity: (Intimidation, Physical Save Modifier)
+- Charisma: (Persuasion, Deception, Bargaining, Performance, Charm)
+- Strength: (Acrobatics, Athletics, Agility, Lifting)
+- Dexterity: (Sleight of Hand, Stealth, Medicine, Weapon Mastery, Carving)
+- Intelligence: (History, Wisdom, Science, Technology, Foraging)
+- Vitality: (Endurance, Resistance)
+- Willpower: (Feat of Heroism, Leadership, Counter-Charisma)
+- Arcana: (Magical Knowledge, Magic Save Modifier)
+- Ferocity: (Intimidation, Physical Save Modifier)
 ### Minor Stats
 Each major stat has related minor stats that are updated dynamically based on the selected race and vocation, or manual inputs.
 ### Micro Stats
