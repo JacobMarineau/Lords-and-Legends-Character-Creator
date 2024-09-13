@@ -288,10 +288,6 @@
     <h2>Vocation Selection</h2>
     <label for="vocation">Select Vocation:</label>
     <select id="vocation" name="vocation">
-        <option value="">--Choose a Vocation--</option>
-        <option value="warrior">Warrior</option>
-        <option value="scholar">Scholar</option>
-        <option value="wanderer">Wanderer</option>
     </select>
 
     <!-- Weaponry Section -->
@@ -323,6 +319,22 @@
         <h3>Magic</h3>
         <ul id="vocation-magic" class="vocation-list">
             <li>No magic selected yet.</li>
+        </ul>
+    </div>
+
+     <!-- Minor Stat Section -->
+     <div id="char-minor-stats">
+        <h3>Minor Stats</h3>
+        <ul>
+            <li id="char-minor-output" class="vocation-list">Minor Stats: None</li>
+        </ul>
+    </div>
+
+    <!-- Micro Stat Section -->
+    <div id="char-micro-stats">
+        <h3>Micro Stats</h3>
+        <ul>
+            <li id="char-micro-output" class="vocation-list">Micro Stats: None</li>
         </ul>
     </div>
 </section>
@@ -371,35 +383,90 @@
 
             <section id="character-sheet">
                 <h2>Character Sheet</h2>
+                
+                <!-- Character Info -->
                 <div id="character-info">
-                    <p><strong>Name:</strong> <span id="char-name-output">N/A</span></p>
-                    <p><strong>Race:</strong> <span id="char-race-output">N/A</span></p>
-                    <p><strong>Vocation:</strong> <span id="char-vocation-output">N/A</span></p>
+                    <h3>Character Information</h3>
+                    <label for="char-name">Name:</label>
+                    <input type="text" id="char-name" name="char-name" value="N/A">
+                    
+                    <label for="char-race">Race:</label>
+                    <input type="text" id="char-race" name="char-race" value="N/A" readonly>
+                    
+                    <label for="char-vocation">Vocation:</label>
+                    <input type="text" id="char-vocation" name="char-vocation" value="N/A" readonly>
+                </div>
+                
+                <!-- Major Stats -->
+                <div id="character-major-stats">
+                    <h3>Major Stats</h3>
+                    <label for="char-strength">Strength:</label>
+                    <input type="number" id="char-strength" name="char-strength" value="0">
+                    
+                    <label for="char-dexterity">Dexterity:</label>
+                    <input type="number" id="char-dexterity" name="char-dexterity" value="0">
+                    
+                    <!-- Add other major stats in a similar fashion -->
                 </div>
             
+                <!-- Minor Stats -->
+                <div id="character-minor-stats">
+                    <h3>Minor Stats</h3>
+                    <ul id="char-minor-output"></ul>
+                </div>
+            
+                <!-- Micro Stats -->
+                <div id="character-micro-stats">
+                    <h3>Micro Stats</h3>
+                    <ul id="char-micro-output"></ul>
+                </div>
+            
+                <!-- Attributes (HP, AR, SC, etc.) -->
                 <div id="character-attributes">
                     <h3>Attributes</h3>
-                    <p><strong>Strength:</strong> <span id="char-strength-output">0</span></p>
-                    <p><strong>Dexterity:</strong> <span id="char-dexterity-output">0</span></p>
-                    <!-- Other attributes -->
+                    <label for="char-hp">Hit Points (HP):</label>
+                    <input type="number" id="char-hp" name="char-hp" value="0">
+                    
+                    <label for="char-thp">Temporary Hit Points (THP):</label>
+                    <input type="number" id="char-thp" name="char-thp" value="0">
+                    
+                    <label for="char-ar">Armor Rating (AR):</label>
+                    <input type="number" id="char-ar" name="char-ar" value="0">
+                    
+                    <label for="char-mr">Magic Resistance (MR):</label>
+                    <input type="number" id="char-mr" name="char-mr" value="0">
+                    
+                    <label for="char-sc">Speed Class (SC):</label>
+                    <input type="number" id="char-sc" name="char-sc" value="0">
+                    
+                    <label for="char-os">Over-Shields (OS):</label>
+                    <input type="number" id="char-os" name="char-os" value="0">
+                    
+                    <label for="char-fp">Focus Points (FP):</label>
+                    <input type="number" id="char-fp" name="char-fp" value="0">
                 </div>
             
+                <!-- Skills -->
+                <div id="character-skills">
+                    <h3>Skills</h3>
+                    <ul id="char-skills-output"></ul>
+                </div>
+            
+                <!-- Equipment -->
+                <div id="character-equipment">
+                    <h3>Equipment</h3>
+                    <ul id="char-equipment-output"></ul>
+                </div>
+            
+                <!-- Passives -->
                 <div id="character-passives">
                     <h3>Passives</h3>
                     <p id="char-passive-output">No passives selected</p>
                 </div>
-            
-                <div id="character-equipment">
-                    <h3>Equipment</h3>
-                    <ul>
-                        <li id="char-armor-output">Armor: None</li>
-                        <li id="char-weapons-output">Weapons: None</li>
-                    </ul>
-                </div>
             </section>
             
-            
-            <button type="submit">Save Character</button>
+            <!-- Save Button -->
+            <button type="button" id="save-character">Save Character</button>
         </form>
       </div>
     </div>

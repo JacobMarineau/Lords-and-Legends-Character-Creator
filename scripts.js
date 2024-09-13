@@ -180,8 +180,9 @@ document.getElementById("arcana").addEventListener("input", function () {
   const newValue = Number(this.value);
   updateMajorStat("arcana", newValue);
 });
-
+// --------------------------------------------------------
 // Handle willpower inputs separately (innate and extended)
+// --------------------------------------------------------
 document
   .getElementById("willpower-innate")
   .addEventListener("input", function () {
@@ -264,9 +265,9 @@ const baseStats = {
   intelligence: 10,
   charisma: 10,
   vitality: 10,
-  ferocity: 10,
-  arcana: 10,
-  willpower: { innate: 10, extended: 10 },
+  ferocity: 1,
+  arcana: 1,
+  willpower: { innate: 1, extended: 0 },
 };
 
 // Function to update baseStats when a player manually inputs a value
@@ -438,3 +439,199 @@ document.getElementById("race").addEventListener("change", function () {
     applyRaceModifiers(selectedRace);
   }
 });
+
+// --------------------------------------------------
+// FUNCTIONS FOR HANDLING VOCATIONS AND VOCATION DATA
+// --------------------------------------------------
+
+// {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{FIX!}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+//?? WHEN VOCATION IS CHANGED IT ADDS THE MODIFIER WITHOUT RESETTING TO THE SET NUMBER
+// {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{FIX!}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+let vocationData = {}; // Variable to store the loaded data
+
+// Fetch the data.json file
+fetch("data.json")
+  .then((response) => response.json()) // Convert the response to JSON
+  .then((data) => {
+    vocationData = data.vocations; // Save the vocations data for later use
+    populateVocationOptions(vocationData); // Populate the dropdown with vocations
+  })
+  .catch((error) => console.error("Error loading JSON:", error));
+
+// Function to populate the vocation dropdown
+function populateVocationOptions(vocations) {
+  const vocationSelect = document.getElementById("vocation");
+
+  // Clear existing options
+  vocationSelect.innerHTML = '<option value="">--Choose a Vocation--</option>';
+
+  // Loop through the vocations in the data and create <option> elements
+  Object.keys(vocations).forEach((vocationKey) => {
+    const vocationOption = document.createElement("option");
+    vocationOption.value = vocationKey;
+    vocationOption.textContent = vocations[vocationKey].name;
+    vocationSelect.appendChild(vocationOption);
+  });
+}
+
+// Function to apply vocation-specific bonuses to minor stats and micro stats
+function applyVocationBonuses(vocation) {
+  const vocationData = vocation;
+
+  // Apply minor stat bonuses
+  Object.keys(vocationData.minorStatBonuses).forEach((minorStat) => {
+    const bonus = vocationData.minorStatBonuses[minorStat];
+    const minorStatElement = document.getElementById(minorStat);
+
+    if (minorStatElement) {
+      const currentValue = Number(minorStatElement.value) || 0;
+      const newValue = currentValue + bonus;
+      minorStatElement.value = newValue;
+      minorStatElement.nextElementSibling.innerText = newValue; // Assuming next sibling displays final value
+    }
+  });
+
+  // Apply micro stat bonuses and update micro stats section
+  applyMicroStats(vocationData.microStats);
+
+  applyMinorStats(vocationData.minorStatBonuses);
+
+  // Update vocation details in the HTML (weaponry, equipment, skills, armor rating)
+  updateVocationDetails(vocationData);
+}
+
+// Function to apply micro stat bonuses
+function applyMicroStats(microStats) {
+  // Update micro stats section in the HTML
+  const microStatsList = document.getElementById("char-micro-output");
+  microStatsList.innerHTML = ""; // Clear previous micro stats
+
+  Object.keys(microStats).forEach((microStat) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = `${microStat.replace(/-/g, " ")}: ${
+      microStats[microStat]
+    }`;
+    microStatsList.appendChild(listItem);
+  });
+}
+
+// Function to apply minor stat bonuses
+function applyMinorStats(minorStatBonuses) {
+  // Update minor stats section in the HTML
+  const minorStatsList = document.getElementById("char-minor-output"); // Use "char-minor-output"
+  minorStatsList.innerHTML = ""; // Clear previous minor stats
+
+  // Loop through each minor stat and display its value
+  Object.keys(minorStatBonuses).forEach((minorStat) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = `${minorStat.replace(/-/g, " ")}: ${
+      minorStatBonuses[minorStat]
+    }`;
+    minorStatsList.appendChild(listItem);
+  });
+}
+
+// Function to populate vocation details in the HTML (weaponry, equipment, skills, armor rating)
+function updateVocationDetails(vocationData) {
+  // Update weaponry section
+  const weaponryList = document.getElementById("vocation-weaponry");
+  weaponryList.innerHTML = "";
+  let totalArmorRating = 0; // Track total AR
+
+  vocationData.weaponry.forEach((weapon) => {
+    const listItem = document.createElement("li");
+    if (weapon.armor) {
+      listItem.textContent = `${weapon.name} (${weapon.type}) - ${weapon.armor}`;
+      totalArmorRating += parseInt(weapon.armor); // Add to total armor rating if it has AR
+    } else {
+      listItem.textContent = `${weapon.name} (${weapon.type}) - ${
+        weapon.damage || weapon.effect
+      }`;
+    }
+    weaponryList.appendChild(listItem);
+  });
+
+  // Update equipment section
+  const equipmentList = document.getElementById("vocation-equipment");
+  equipmentList.innerHTML = "";
+  vocationData.equipment.forEach((item) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = item;
+    equipmentList.appendChild(listItem);
+  });
+
+  // Update skills section
+  const skillsList = document.getElementById("vocation-skills");
+  skillsList.innerHTML = "";
+  vocationData.skills.forEach((skill) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = `${skill.name}: ${skill.description}`;
+    skillsList.appendChild(listItem);
+  });
+
+  // Update total Armor Rating (AR) in the relevant section
+  const armorRatingElement = document.getElementById("armor-rating");
+  armorRatingElement.innerText = `Total Armor Rating: ${totalArmorRating} AR`;
+}
+
+// Event listener for vocation selection
+document.getElementById("vocation").addEventListener("change", function () {
+  const selectedVocation = this.value;
+  if (selectedVocation) {
+    applyVocationBonuses(vocationData[selectedVocation]);
+  }
+});
+
+function updateCharacterSheet(characterData) {
+  // Update Character Info
+  document.getElementById("char-name").value = characterData.name || "N/A";
+  document.getElementById("char-race").value = characterData.race || "N/A";
+  document.getElementById("char-vocation").value =
+    characterData.vocation || "N/A";
+
+  // Update Major Stats
+  document.getElementById("char-strength").value =
+    characterData.stats.strength || 0;
+  document.getElementById("char-dexterity").value =
+    characterData.stats.dexterity || 0;
+  // Add other major stats similarly
+
+  // Update Minor Stats
+  updateList("char-minor-output", characterData.minorStats);
+
+  // Update Micro Stats
+  updateList("char-micro-output", characterData.microStats);
+
+  // Update Attributes (HP, AR, SC, etc.)
+  document.getElementById("char-hp").value = characterData.attributes.hp || 0;
+  document.getElementById("char-ar").value = characterData.attributes.ar || 0;
+  document.getElementById("char-mr").value = characterData.attributes.mr || 0;
+  // Add other attributes similarly
+
+  // Update Skills
+  updateList("char-skills-output", characterData.skills);
+
+  // Update Equipment
+  updateList("char-equipment-output", characterData.equipment);
+
+  // Update Passives
+  document.getElementById("char-passive-output").textContent =
+    characterData.passives || "No passives selected";
+}
+
+function updateList(elementId, dataList) {
+  const listElement = document.getElementById(elementId);
+  listElement.innerHTML = ""; // Clear current list
+
+  if (dataList && dataList.length > 0) {
+    dataList.forEach((item) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = item;
+      listElement.appendChild(listItem);
+    });
+  } else {
+    listElement.innerHTML = "<li>None</li>";
+  }
+}
+
+updateCharacterSheet(CharacterData);
