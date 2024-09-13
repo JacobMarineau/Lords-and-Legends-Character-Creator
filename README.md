@@ -28,7 +28,7 @@ The **Lords & Legends Character Creator** is a web-based tool for creating and m
 
 ## Project Structure
 
-```bash
+
 ├── index.html         # Main HTML file for the character creator
 ├── styles.css         # Stylesheet for the UI
 ├── scripts.js         # JavaScript logic for dynamic updates
