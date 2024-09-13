@@ -34,13 +34,13 @@ The **Lords & Legends Character Creator** is a web-based tool for creating and m
 ├── scripts.js         # JavaScript logic for dynamic updates
 ├── data.json          # Data file for races, vocations, and bonuses
 └── README.md          # Project documentation
-##index.html
+## index.html
 This file contains the structure for the UI, including the form inputs for stats, dropdowns for race and vocation selection, and sections for displaying the character sheet.
 
-##styles.css
+## styles.css
 Defines the styles for the web app, ensuring a clean and organized layout.
 
-##scripts.js
+## scripts.js
 The core of the character creator’s functionality. It handles all dynamic updates, including:
 
 Modifying stats based on race and vocation selection
@@ -49,7 +49,7 @@ Handling custom inputs for stats and attributes
 data.json
 Contains data about the available races, vocations, their associated bonuses, and skills.
 
-##How to Run
+## How to Run
 Download/Clone the repository: You can clone the repository using the following command:
 bash
 Copy code
@@ -61,8 +61,8 @@ Copy code
 npx http-server .
 This command serves the folder with the index.html file.
 Detailed Explanation
-##Major Stats
-###The following major stats are supported:
+## Major Stats
+### The following major stats are supported:
 
 Charisma: (Persuasion, Deception, Bargaining, Performance, Charm)
 Strength: (Acrobatics, Athletics, Agility, Lifting)
@@ -72,20 +72,20 @@ Vitality: (Endurance, Resistance)
 Willpower: (Feat of Heroism, Leadership, Counter-Charisma)
 Arcana: (Magical Knowledge, Magic Save Modifier)
 Ferocity: (Intimidation, Physical Save Modifier)
-###Minor Stats
+### Minor Stats
 Each major stat has related minor stats that are updated dynamically based on the selected race and vocation, or manual inputs.
-###Micro Stats
+### Micro Stats
 Micro stats are vocation-specific and update based on the vocation selected. They are smaller skills or bonuses that don’t directly tie into major stats.
-###Attributes
+### Attributes
 Attributes like Hit Points (HP), Armor Rating (AR), Magic Resistance (MR), and Speed Class (SC) are manually input by the player but are displayed dynamically on the character sheet.
 
-##Race and Vocation Modifiers
+## Race and Vocation Modifiers
 Race Modifiers: Modify base stats when a race is selected.
 Vocation Modifiers: Apply specific bonuses to minor and micro stats when a vocation is selected.
-##Contributions
+## Contributions
 If you want to contribute to the project, feel free to fork the repository and submit a pull request. Make sure to follow the project's structure and keep all functions well-commented for easy understanding.
 
-##Fork the repository.
+## Fork the repository.
 Create your feature branch: git checkout -b feature/my-feature.
 Commit your changes: git commit -m 'Add my feature'.
 Push to the branch: git push origin feature/my-feature.
